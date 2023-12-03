@@ -1,0 +1,20 @@
+
+/* DIMENSION  */
+.vh100-header-footer {
+    height: calc(100vh - 200px);
+}
+
+/* COLOR  */
+.bg_carbon{
+    background-color: rgb(18, 12, 4);
+}
+
+
+/* STYLE  */
+.text_shadow{
+    text-shadow: 2px 2px 20px rgb(255, 255, 255);
+}
+
+
+
+

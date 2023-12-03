@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .header {
+   
+    clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+    @apply flex justify-center items-center h-100 bg-sky-950 text-zinc-200 text-center;
+  }
+}

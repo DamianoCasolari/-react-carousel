@@ -1,0 +1,10 @@
+@import url('./partials/_carousel.css');
+@import url('./partials/_utilities.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  box-sizing: border-box;
+}

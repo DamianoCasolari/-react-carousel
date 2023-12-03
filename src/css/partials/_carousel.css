@@ -1,0 +1,16 @@
+/* CARD  */
+
+.card{
+    opacity: 0.5;
+    padding: 10px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+
+.active{
+    opacity: 1;
+    padding: 0;
+    /* position: absolute;
+    z-index: 1; */
+}
