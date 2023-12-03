@@ -84,7 +84,8 @@ export function AppCarousel({ currentIndex }) {
             <img
               src={getImgUrl(item.image)}
               className={
-                "w-full h-full object-cover duration-75" + assignOpacity(index)
+                "w-full h-full object-cover duration-75 rounded-2xl" +
+                assignOpacity(index)
               }
               alt="Main_carousel_image"
             />
@@ -92,7 +93,7 @@ export function AppCarousel({ currentIndex }) {
         );
       })}
 
-      <div className="Carousel flex items-end justify-center h-full">
+      <div className="Carousel flex items-end justify-center h-full p-4">
         {CarouselItems.map((item, index) => {
           return (
             <div
@@ -105,7 +106,7 @@ export function AppCarousel({ currentIndex }) {
             >
               <img
                 src={getImgUrl(item.image)}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover rounded-2xl"
                 alt=""
               />
             </div>
