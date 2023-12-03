@@ -5,12 +5,14 @@
     padding: 10px;
     transition-duration: 0.4s;
     cursor: pointer;
+    filter: drop-shadow(5px 5px 5px black);
 }
 
 
 .active{
     opacity: 1;
     padding: 0;
+    filter: drop-shadow(5px 10px 10px black);
     /* position: absolute;
     z-index: 1; */
 }

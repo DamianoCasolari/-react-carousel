@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CarouselItems } from "../../store";
 
 export function AppCarousel({ currentIndex }) {
@@ -13,6 +13,14 @@ export function AppCarousel({ currentIndex }) {
   function assignActive(index) {
     if (stateIndex == index) {
       return "active";
+    }
+  }
+  //function to assign first active class
+  function assignOpacity(index) {
+    if (stateIndex == index) {
+      return " opacity-100";
+    } else {
+      return " opacity-0";
     }
   }
   //function to assign active class with click
@@ -36,6 +44,26 @@ export function AppCarousel({ currentIndex }) {
       setIndex((stateIndex) => stateIndex - 1);
     }
   }
+  //function to increment/decrement currentIndex with keyboard
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "ArrowLeft") {
+        decrementIndex();
+      } else if (event.key === "ArrowRight") {
+        incrementIndex();
+      } else if (event.key === " ") {
+        incrementIndex();
+      }
+      console.log(event.key);
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [stateIndex, incrementIndex, decrementIndex]);
+
   //increment or decrement with arrow
   //   setTimeout(() => {
   //     if (stateIndex >= CarouselItems.length - 1) {
@@ -50,13 +78,27 @@ export function AppCarousel({ currentIndex }) {
 
   return (
     <>
-      <div className="Carousel flex items-center justify-center h-full">
+      {CarouselItems.map((item, index) => {
+        return (
+          <div key={item.id} className="main_image w-full h-5/6 absolute p-4">
+            <img
+              src={getImgUrl(item.image)}
+              className={
+                "w-full h-full object-cover duration-75" + assignOpacity(index)
+              }
+              alt="Main_carousel_image"
+            />
+          </div>
+        );
+      })}
+
+      <div className="Carousel flex items-end justify-center h-full">
         {CarouselItems.map((item, index) => {
           return (
             <div
               key={item.id}
               className={
-                "card flex items-center justify-center w-10/12 md:w-6/12 h-5/6 " +
+                "card flex items-center justify-center w-10/12 md:w-6/12 h-2/6 " +
                 assignActive(index)
               }
               onClick={changeIndex(index)}
@@ -71,11 +113,35 @@ export function AppCarousel({ currentIndex }) {
         })}
       </div>
       <div className="flex justify-between ">
-        <button className="left" onClick={decrementIndex}>
-          left
+        <button
+          className="left hover:opacity-50 duration-300 bottom-[30px] left-0 fixed"
+          onClick={decrementIndex}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            fill="currentColor"
+            className="bi bi-caret-left-fill"
+            viewBox="0 0 16 16"
+          >
+            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+          </svg>
         </button>
-        <button className="right" onClick={incrementIndex}>
-          right
+        <button
+          className="right hover:opacity-50 duration-300 bottom-[30px] right-0 fixed"
+          onClick={incrementIndex}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            fill="currentColor"
+            className="bi bi-caret-right-fill"
+            viewBox="0 0 16 16"
+          >
+            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+          </svg>
         </button>
       </div>
     </>

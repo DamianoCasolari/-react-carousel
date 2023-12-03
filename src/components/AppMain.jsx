@@ -14,7 +14,7 @@ export function AppMain() {
   //   }, 1000);
 
   return (
-    <main className="vh100-header-footer p-4 relative">
+    <main className="vh100-header-footer relative">
       <AppCarousel currentIndex={0}></AppCarousel>
     </main>
   );
