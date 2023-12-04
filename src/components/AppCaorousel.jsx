@@ -65,16 +65,25 @@ export function AppCarousel({ currentIndex }) {
   }, [stateIndex, incrementIndex, decrementIndex]);
 
   //increment or decrement with arrow
-  //   setTimeout(() => {
-  //     if (stateIndex >= CarouselItems.length - 1) {
-  //       setIndex(0);
-  //       console.log(stateIndex);
-  //     } else {
-  //       setIndex((stateIndex) => stateIndex + 1);
-  //       console.log(stateIndex);
-  //     }
-  //   }, 1000);
-  //create autoplay
+  useEffect(() => {
+    const timeoutId = setInterval(() => {
+      if (stateIndex >= CarouselItems.length - 1) {
+        setIndex(0);
+      } else {
+        setIndex((stateIndex) => stateIndex + 1);
+      }
+    }, 4000);
+
+    return () => clearInterval(timeoutId);
+  }, [stateIndex]);
+
+  //stop and restar autopaly with moveon event
+
+  // useEffect(()=>{
+  //   if(document.querySelector("main").addEventListener("mouseover",()=>{
+  //     // clearInterval(timeoutId)
+  //   }))
+  // })
 
   return (
     <>

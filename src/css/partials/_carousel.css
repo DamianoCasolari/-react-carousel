@@ -1,7 +1,7 @@
 /* CARD  */
 
 .card{
-    opacity: 0.5;
+    opacity: 0.75;
     padding: 10px;
     transition-duration: 0.4s;
     cursor: pointer;
@@ -13,6 +13,4 @@
     opacity: 1;
     padding: 0;
     filter: drop-shadow(5px 10px 10px black);
-    /* position: absolute;
-    z-index: 1; */
 }
